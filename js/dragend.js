@@ -81,7 +81,7 @@
       defaultSettings = {
         pageClass          : "dragend-page",
         direction          : "horizontal",
-        minDragDistance    : "250",
+        minDragDistance    : "200",
         onSwipeStart       : noop,
         onSwipeEnd         : noop,
         onDragStart        : noop,
@@ -93,7 +93,7 @@
         itemsInPage        : 1,
         scribe             : 0,
         borderBetweenPages : 0,
-        duration           : 600,
+        duration           : 400,
         preventDrag        : false
       },
 
@@ -396,6 +396,9 @@
       _onMove: function( event ) {
 
         event = event.originalEvent || event;
+
+        // ensure swiping with one touch and not pinching
+        // if ( event.touches && event.touches.length > 1 || event.scale && event.scale !== 1) return;
 
         event.preventDefault();
         if (this.settings.stopPropagation) {
