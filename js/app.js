@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
   		var drum4 = document.getElementById('panel-204')
   		var voicetog = false
 
+  		voice_button.addEventListener('click', function(event) {
+        cracked.unlock()
+  		})
+
   		drum1.addEventListener('click', function(event) {
         this.classList.add("active")
   			__("#bass").adsr("trigger")

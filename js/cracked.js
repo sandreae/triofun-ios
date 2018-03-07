@@ -13,8 +13,8 @@ var _nodeStore = {},
     _currentSelector = "",
     _currentMacro = [],
     _debugEnabled = false,
-    _context = window.myContext
-    console.log(_context)
+    _context = window.AudioContext ? new AudioContext() : new webkitAudioContext();
+
 
 /**
  * #Finding#
@@ -96,6 +96,17 @@ function find() {
     _previousNode = null;
     return cracked;
 }
+
+cracked.unlock = function(){
+    console.log(_context)
+    var buffer = _context.createBuffer(1, 1, 22050);
+    var source = _context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(_context.destination);
+    source.start(0);
+    setTimeout(function(){ console.log(_context); }, 3000); 
+    }
+
 
 /**
  * find nodes in a macro with a selector updates the _selectedNodes array
