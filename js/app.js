@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  var container = document.getElementById("demo");
+  var container = document.getElementById("drag-container");
   dragend = new Dragend(container, {
     afterInitialize: function() {
       container.style.visibility = "visible";
