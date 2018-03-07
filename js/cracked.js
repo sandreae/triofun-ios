@@ -102,7 +102,7 @@ cracked.unlock = function(){
     {
         var unlock = function()
         {
-            context.resume().then(function()
+            _context.resume().then(function()
             {
                 document.body.removeEventListener('touchstart', unlock);
                 document.body.removeEventListener('touchend', unlock);
