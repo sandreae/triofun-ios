@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.addEventListener('touchmove', function(e) { 
         e.preventDefault(); 
       });
+
       container.style.visibility = "visible";
 
   		var voice_button = document.getElementById('panel-101')
@@ -20,8 +21,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
       FastClick.attach(document.body);
 
-  		voice_button.addEventListener('click', function(event) {
+      voice_button.addEventListener('touchstart', function(event) {
         cracked.unlock()
+        this.classList.add("active")
+        __("monosynth").monosynth("noteOn",60);
+      })
+  		voice_button.addEventListener('touchend', function(event) {
+        this.classList.remove("active")
+        __("monosynth").monosynth("noteOff")
   		})
 
       drum1.addEventListener('touchstart', function(event) {
@@ -58,9 +65,10 @@ document.addEventListener("DOMContentLoaded", function() {
   		})
 
   		__().sine({frequency:180}).adsr({id:"bass",envelope:[0.1, 0.1, 1]}).lowpass(120).compressor({release:0}).dac();
-  		__().sine(80).adsr({id:"kick",envelope:[0.1, 0.1, 1]}).connect("compressor"); //100ms envelope
-  		__().pink().adsr({id:"snare",envelope:[0.1, 0.1, 1]}).connect("compressor"); //50ms
-  		__().white().adsr({id:"hihat",envelope:[0.1, 0.1, 1]}).connect("compressor").play(); //10ms
+  		__().sine(80).adsr({id:"kick",envelope:[0.1, 0.1, 1]}).connect("compressor");
+  		__().pink().adsr({id:"snare",envelope:[0.1, 0.1, 1]}).connect("compressor");
+  		__().white().adsr({id:"hihat",envelope:[0.1, 0.1, 1]}).connect("compressor");
+      __().monosynth().connect("compressor").play();
 
   		cracked.soundLoaded = function(x) {
         console.log("sample loaded", x)
