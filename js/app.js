@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
   var container = document.getElementById("drag-container");
   dragend = new Dragend(container, {
     afterInitialize: function() {
+
+      document.body.addEventListener('touchmove', function(e) { 
+        e.preventDefault(); 
+      });
       container.style.visibility = "visible";
 
   		var voice_button = document.getElementById('panel-101')
