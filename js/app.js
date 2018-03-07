@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
         __("#hihat").adsr("trigger")
         setInterval(function() {event.target.classList.remove("active")}, 500)
       })
-  		drum4.addEventListener('touchstart', function(event) {
+  		drum4.addEventListener('touchend', function(event) {
         this.classList.add("active")
   			__("#hihat").adsr("release")
   			setInterval(function() {event.target.classList.remove("active")}, 500)
