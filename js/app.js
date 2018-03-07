@@ -1,17 +1,10 @@
-var initRecorder
-
-// Hides mobile browser's address bar when page is done loading.
-window.addEventListener('load', function(e) {
-  setTimeout(function() { window.scrollTo(0, 1); }, 1);
-}, false);
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body);
+  }, false);
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-
-  if ('addEventListener' in document) {
-    document.addEventListener('DOMContentLoaded', function() {
-      FastClick.attach(document.body);
-    }, false);
-  }
 
   var container = document.getElementById("demo");
   dragend = new Dragend(container, {
