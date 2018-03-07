@@ -38,12 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
       drum4.addEventListener('touchstart', function(event) {
         this.classList.add("active")
         __("#hihat").adsr("trigger")
-        setInterval(function() {event.target.classList.remove("active")}, 500)
       })
   		drum4.addEventListener('touchend', function(event) {
-        this.classList.add("active")
+        this.classList.remove("active")
   			__("#hihat").adsr("release")
-  			setInterval(function() {event.target.classList.remove("active")}, 500)
   		})
 
   		__().sine({frequency:180}).adsr({id:"bass",envelope:0.8}).lowpass(120).compressor({release:0}).dac();
