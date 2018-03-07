@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       document.body.addEventListener('touchmove', function(e) { 
         e.preventDefault(); 
+        var xa = x
+        var x = Math.floor( event.touches[0].clientY );
+        __("monosynth").ramp(x,0.01,"frequency",xa);
       });
 
       container.style.visibility = "visible";
