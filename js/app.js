@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   		var drum4 = document.getElementById('panel-204')
   		var voicetog = false
 
-      FastClick.attach(drum1);
+      FastClick.attach(document.body);
 
   		voice_button.addEventListener('click', function(event) {
         cracked.unlock()
