@@ -6,6 +6,13 @@ window.addEventListener('load', function(e) {
 }, false);
 
 document.addEventListener("DOMContentLoaded", function() {
+
+  if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body);
+    }, false);
+  }
+
   var container = document.getElementById("demo");
   dragend = new Dragend(container, {
     afterInitialize: function() {
