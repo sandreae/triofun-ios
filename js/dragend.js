@@ -380,12 +380,16 @@
           event.stopPropagation();
         }
 
-        addEventListener(doc.body, moveEvent, this._onMove);
-        addEventListener(doc.body, endEvent, this._onEnd);
+        console.log(event.touches)
 
-        this.startCoords = getCoords(event);
+        if (event.touches.length > 1) {
+          addEventListener(doc.body, moveEvent, this._onMove);
+          addEventListener(doc.body, endEvent, this._onEnd);
 
-        this.settings.onDragStart.call( this, event );
+          this.startCoords = getCoords(event);
+
+          this.settings.onDragStart.call( this, event );
+        }
 
       },
 
