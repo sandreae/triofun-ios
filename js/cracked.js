@@ -100,14 +100,11 @@ function find() {
 cracked.unlock = function(){
     if (_context.state === 'suspended' && 'ontouchstart' in window)
     {
-        var unlock = function()
+        _context.resume().then(function()
         {
-            _context.resume().then(function()
-            {
-                document.body.removeEventListener('touchstart', unlock);
-                document.body.removeEventListener('touchend', unlock);
-            });
-        };
+            document.body.removeEventListener('touchstart', unlock);
+            document.body.removeEventListener('touchend', unlock);
+        });
 
         document.body.addEventListener('touchstart', unlock, false);
         document.body.addEventListener('touchend', unlock, false);
