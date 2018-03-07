@@ -98,14 +98,22 @@ function find() {
 }
 
 cracked.unlock = function(){
-    console.log(_context)
-    var buffer = _context.createBuffer(1, 1, 22050);
-    var source = _context.createBufferSource();
-    source.buffer = buffer;
-    source.connect(_context.destination);
-    source.start(0);
-    setTimeout(function(){ console.log(_context); }, 3000); 
+    if (_context.state === 'suspended' && 'ontouchstart' in window)
+    {
+        var unlock = function()
+        {
+            context.resume().then(function()
+            {
+                document.body.removeEventListener('touchstart', unlock);
+                document.body.removeEventListener('touchend', unlock);
+            });
+        };
+
+        document.body.addEventListener('touchstart', unlock, false);
+        document.body.addEventListener('touchend', unlock, false);
     }
+} 
+
 
 
 /**
