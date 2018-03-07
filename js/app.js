@@ -1,8 +1,4 @@
-if ('addEventListener' in document) {
-  document.addEventListener('DOMContentLoaded', function() {
-    FastClick.attach(document.body);
-  }, false);
-}
+
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -17,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
   		var drum3 = document.getElementById('panel-203')
   		var drum4 = document.getElementById('panel-204')
   		var voicetog = false
+
+      FastClick.attach(drum1);
 
   		voice_button.addEventListener('click', function(event) {
         cracked.unlock()
