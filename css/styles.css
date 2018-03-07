@@ -1,0 +1,71 @@
+
+html, body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+audio {
+    display: none;
+}
+
+.flex-container {
+    padding-top : 5vh;
+    width: 100vw;
+    height: 95vh;
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    text-align: center;
+    align-items: stretch;
+}
+
+.flex-container-1 {
+    background-size: cover;
+    background-image: url('../images/page1.jpg'); 
+    width: 100vw;
+}
+.flex-container-1 > * {
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+}
+.flex-container-2 {
+    background-size: cover;
+    background-image: url('../images/page2.jpg');
+    width: 100vw;
+}
+.flex-container-2 > * {
+    -webkit-flex: 1 25%;
+    flex: 1 25%;
+}
+
+.flex-container-3 {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    background-size: cover;
+    background: url('../images/page3.jpg');
+    width: 100vw;
+}
+.record-button {
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+    min-height: 25%;
+}
+
+.play-button {
+    -webkit-flex: 1 20%;
+    flex: 1 20%;
+}
+.drag-el {background-color: black; height: 5%; width: 100%; position: fixed;}
+.active {background-color: red !important;}
+ #demo {visibility: hidden; height: 100%;}
+.play-button {border: solid black;}
+.record-button {background: cyan;}
