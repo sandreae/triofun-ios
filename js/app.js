@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
   		drum1.addEventListener('touchstart', function(event) {
         var self = this
         self.classList.add("active")
-  			__("sampler").start()
+  			__("sampler").start(0)
         setTimeout(function(){ self.classList.remove("active") }, 500);
   		})
 
