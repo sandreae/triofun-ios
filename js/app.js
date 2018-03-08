@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.addEventListener('touchmove', function(e) { 
         e.preventDefault(); 
         var lastpitch = currentpitch
-        var currentpitch = Math.floor( e.touches[0].clientY );
+        currentpitch = Math.floor( e.touches[0].clientY );
         console.log(currentpitch)
         __("monosynth").ramp(currentpitch,0.01,"frequency",lastpitch);
       });
@@ -81,29 +81,6 @@ document.addEventListener("DOMContentLoaded", function() {
       var onError = function(err) {
         console.log('The following error occured: ' + err);
       }
-
-      function handleOrientation(event) {
-        var x = event.beta;  // In degree in the range [-180,180]
-
-        // Because we don't want to have the device upside down
-        // We constrain the x value to the range [-90,90]
-        if (x >  90) { x =  90};
-        if (x < -90) { x = -90};
-        x += 90;
-        
-        xMax = 180;
-        xMin = 0;
-
-        yMax = 30;
-        yMin = 10;
-
-        percent = (inputY - yMin) / (yMax - yMin);
-        outputX = percent * (xMax - xMin) + xMin;
-
-        __("monosynth").attr({"detune":outputX})
-      }
-
-      window.addEventListener('deviceorientation', handleOrientation);
     }
   });
 }, false)
