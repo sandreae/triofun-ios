@@ -96,16 +96,22 @@ document.addEventListener("DOMContentLoaded", function() {
   		__().pink().adsr({id:"snare",envelope:[0.1, 0.1, 1]}).connect("compressor");
   		__().white().adsr({id:"hihat",envelope:[0.1, 0.1, 1]}).connect("compressor");
       __().monosynth().connect("compressor").play();
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum1", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum2", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum3", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum4", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum5", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum6", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum7", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum8", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum9", loop:true}).gain({id: "samplergain"}).connect("dac");
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum10", loop:true}).gain({id: "samplergain"}).connect("dac");
+      __().sampler({path:"/triofun-ios/samples/1_clapogg.mp3", id: "drum1", loop:true}).gain({id: "samplergain"}).connect("dac");
+      __().sampler({path:"/triofun-ios/samples/2_clapogg.mp3", id: "drum2", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/3_clapogg.mp3", id: "drum3", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/4_clapogg.mp3", id: "drum4", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/5_wormbassds.mp3", id: "drum5", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/6_feedthisds.mp3", id: "drum6", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/7_grumpybuzzardds.mp3", id: "drum7", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/8_eelbassds.mp3", id: "drum8", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/9_clavogg.mp3", id: "drum9", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/10_Trtomds.mp3", id: "drum10", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/11_Trtomds.mp3", id: "drum11", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/12_hatds.mp3", id: "drum12", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/13_crashogg.mp3", id: "drum13", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/14_FisaCymds.mp3", id: "drum14", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/15_Cymbalds.mp3", id: "drum15", loop:true}).connect("#samplergain");
+      __().sampler({path:"/triofun-ios/samples/16_hihatopenedogg.mp3", id: "drum16", loop:true}).connect("#samplergain");
 
   		cracked.soundLoaded = function(x) {
         console.log("sample loaded", x)
