@@ -89,9 +89,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // We constrain the x value to the range [-90,90]
         if (x >  90) { x =  90};
         if (x < -90) { x = -90};
-
         x += 90;
-        __("ring").attr({"frequency": x})
+        
+        xMax = 180;
+        xMin = 0;
+
+        yMax = 30;
+        yMin = 10;
+
+        percent = (inputY - yMin) / (yMax - yMin);
+        outputX = percent * (xMax - xMin) + xMin;
+
+        __("ring").attr({"frequency": outputX})
       }
 
       window.addEventListener('deviceorientation', handleOrientation);
