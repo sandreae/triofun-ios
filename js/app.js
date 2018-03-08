@@ -74,24 +74,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
       ///////PAGE 3/////////
 
-      drum1.addEventListener('touchstart', function(event) {
-        this.classList.add("active")
-        __("#drum1").start()
-      })
-  		drum1.addEventListener('touchend', function(event) {
-        var self = this
-        stopSample(self)
-  		})
-
-      var stopSample = function(self){
-        var id = "#" + self.id
-        self.classList.remove("active")
-        __(id).ramp([1,0],[0.1])
-        setTimeout(function(){ 
-          __(id).stop()
-          __("#samplergain").attr({"gain": 1}) }, 100);
-      }
-
+      var drums = document.getElementsByClassName('drum-sample')
+      // You have to call the arrays forEach method
+      Array.prototype.forEach.call(drums, function(el, i) { 
+        var id = "#" + el.id
+        el.addEventListener('touchstart', function(event) {
+          el.classList.add("active")
+          __(id).start()
+        })
+        el.addEventListener('touchend', function(event) {
+          el.classList.remove("active")
+          __(id).ramp([1,0],[0.1])
+          setTimeout(function(){ 
+            __(id).stop()
+            __("#samplergain").attr({"gain": 1}) }, 100);
+        })
+      });
 
   		__().sine({frequency:180}).adsr({id:"bass",envelope:[0.1, 0.1, 1]}).lowpass(120).compressor({release:0}).dac();
   		__().sine(80).adsr({id:"kick",envelope:[0.1, 0.1, 1]}).connect("compressor");
