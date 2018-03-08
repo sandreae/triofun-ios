@@ -9,20 +9,23 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.addEventListener('touchmove', function(e) { 
         e.preventDefault(); 
         var xa = x
-        var x = Math.floor( event.touches[0].clientY );
+        var x = Math.floor( e.touches[0].clientY );
         __("monosynth").ramp(x,0.01,"frequency",xa);
       });
 
       container.style.visibility = "visible";
 
   		var voice_button = document.getElementById('panel-101')
-  		var drum1 = document.getElementById('panel-201')
-  		var drum2 = document.getElementById('panel-202')
-  		var drum3 = document.getElementById('panel-203')
-  		var drum4 = document.getElementById('panel-204')
+  		var impulse1 = document.getElementById('panel-201')
+  		var impulse2 = document.getElementById('panel-202')
+  		var impulse3 = document.getElementById('panel-203')
+  		var impulse4 = document.getElementById('panel-204')
+      var drum1 = document.getElementById('drum1')
   		var voicetog = false
 
       FastClick.attach(document.body);
+
+      ///////PAGE 1/////////
 
       voice_button.addEventListener('touchstart', function(event) {
         cracked.unlock()
@@ -34,44 +37,54 @@ document.addEventListener("DOMContentLoaded", function() {
         __("monosynth").monosynth("noteOff")
   		})
 
-      drum1.addEventListener('touchstart', function(event) {
+      ///////PAGE 2/////////
+
+      impulse1.addEventListener('touchstart', function(event) {
         this.classList.add("active")
         __("#kick").adsr("trigger")
       })
-      drum1.addEventListener('touchend', function(event) {
+      impulse1.addEventListener('touchend', function(event) {
         this.classList.remove("active")
         __("#kick").adsr("release")
       })
-      drum2.addEventListener('touchstart', function(event) {
+      impulse2.addEventListener('touchstart', function(event) {
         this.classList.add("active")
         __("#bass").adsr("trigger")
       })
-      drum2.addEventListener('touchend', function(event) {
+      impulse2.addEventListener('touchend', function(event) {
         this.classList.remove("active")
         __("#bass").adsr("release")
       })
-      drum3.addEventListener('touchstart', function(event) {
+      impulse3.addEventListener('touchstart', function(event) {
         this.classList.add("active")
         __("#snare").adsr("trigger")
       })
-      drum3.addEventListener('touchend', function(event) {
+      impulse3.addEventListener('touchend', function(event) {
         this.classList.remove("active")
         __("#snare").adsr("release")
       })
-      drum4.addEventListener('touchstart', function(event) {
+      impulse4.addEventListener('touchstart', function(event) {
         this.classList.add("active")
         __("#hihat").adsr("trigger")
       })
-  		drum4.addEventListener('touchend', function(event) {
-        this.classList.remove("active")
-  			__("#hihat").adsr("release")
+
+      ///////PAGE 3/////////
+
+  		drum1.addEventListener('touchstart', function(event) {
+        var self = this
+        self.classList.add("active")
+  			__("sampler").start()
+        setTimeout(function(){ self.classList.remove("active") }, 500);
   		})
+
+
 
   		__().sine({frequency:180}).adsr({id:"bass",envelope:[0.1, 0.1, 1]}).lowpass(120).compressor({release:0}).dac();
   		__().sine(80).adsr({id:"kick",envelope:[0.1, 0.1, 1]}).connect("compressor");
   		__().pink().adsr({id:"snare",envelope:[0.1, 0.1, 1]}).connect("compressor");
   		__().white().adsr({id:"hihat",envelope:[0.1, 0.1, 1]}).connect("compressor");
       __().monosynth().connect("compressor").play();
+      __().sampler({path:"../samples/10_Trtomds.mp3", id: "drum10"}).connect("dac");
 
   		cracked.soundLoaded = function(x) {
         console.log("sample loaded", x)
