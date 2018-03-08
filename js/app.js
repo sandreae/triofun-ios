@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
   		__().sine(80).adsr({id:"kick",envelope:[0.1, 0.1, 1]}).connect("compressor");
   		__().pink().adsr({id:"snare",envelope:[0.1, 0.1, 1]}).connect("compressor");
   		__().white().adsr({id:"hihat",envelope:[0.1, 0.1, 1]}).connect("compressor");
-      __().monosynth().ring().connect("compressor").play();
+      __().monosynth().connect("compressor").play();
       __().sampler({path:"/triofun-ios/samples/1_clapogg.mp3", id: "drum1", loop:true}).gain({id: "samplergain"}).connect("dac");
       __().sampler({path:"/triofun-ios/samples/2_clapogg.mp3", id: "drum2", loop:true}).connect("#samplergain");
       __().sampler({path:"/triofun-ios/samples/3_clapogg.mp3", id: "drum3", loop:true}).connect("#samplergain");
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
         percent = (inputY - yMin) / (yMax - yMin);
         outputX = percent * (xMax - xMin) + xMin;
 
-        __("ring").attr({"frequency": outputX})
+        __("monosynth").attr({"detune":outputX})
       }
 
       window.addEventListener('deviceorientation', handleOrientation);
