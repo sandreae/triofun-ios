@@ -83,11 +83,11 @@ document.addEventListener("DOMContentLoaded", function() {
           __(id).start()
         })
         el.addEventListener('touchend', function(event) {
-          el.classList.remove("active")
-          __(id).ramp([1,0],[0.1])
+          __(id).ramp([1,0],[0.05])
           setTimeout(function(){ 
             __(id).stop()
-            __("#samplergain").attr({"gain": 1}) }, 100);
+            __("#samplergain").attr({"gain": 1}) }, 50);
+            el.classList.remove("active")
         })
       });
 
