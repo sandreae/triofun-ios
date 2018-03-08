@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function() {
         this.classList.add("active")
         __("#hihat").adsr("trigger")
       })
+      impulse3.addEventListener('touchend', function(event) {
+        this.classList.remove("active")
+        __("#hihat").adsr("release")
+      })
 
       ///////PAGE 3/////////
 
@@ -84,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
   		__().pink().adsr({id:"snare",envelope:[0.1, 0.1, 1]}).connect("compressor");
   		__().white().adsr({id:"hihat",envelope:[0.1, 0.1, 1]}).connect("compressor");
       __().monosynth().connect("compressor").play();
-      __().sampler({path:"../samples/10_Trtomds.mp3", id: "drum10"}).connect("dac");
+      __().sampler({path:"../samples/10_Trtomds.wav", id: "drum10"}).connect("dac");
 
   		cracked.soundLoaded = function(x) {
         console.log("sample loaded", x)
