@@ -6,10 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
   dragend = new Dragend(container, {
     afterInitialize: function() {
 
+      var detune = 0
+
       document.body.addEventListener('touchmove', function(e) { 
         e.preventDefault(); 
         var xa = x
         var x = Math.floor( e.touches[0].clientY );
+        x += detune
+        console.log(x)
         __("monosynth").ramp(x,0.01,"frequency",xa);
       });
 
@@ -78,6 +82,20 @@ document.addEventListener("DOMContentLoaded", function() {
       var onError = function(err) {
         console.log('The following error occured: ' + err);
       }
+
+      function handleOrientation(event) {
+        var x = event.beta;  // In degree in the range [-180,180]
+
+        // Because we don't want to have the device upside down
+        // We constrain the x value to the range [-90,90]
+        if (x >  90) { x =  90};
+        if (x < -90) { x = -90};
+
+        x += 90;
+        detune = x
+      }
+
+      window.addEventListener('deviceorientation', handleOrientation);
     }
   });
 }, false)
