@@ -75,11 +75,11 @@ document.addEventListener("DOMContentLoaded", function() {
       ///////PAGE 3/////////
 
       drum1.addEventListener('touchstart', function(event) {
-        self.classList.add("active")
+        this.classList.add("active")
         __("sampler").start()
       })
   		drum1.addEventListener('touchend', function(event) {
-        self.classList.remove("active")
+        this.classList.remove("active")
   			__("sampler").stop()
   		})
 
