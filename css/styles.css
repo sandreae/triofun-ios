@@ -54,11 +54,12 @@ audio {
 }
 
 .flex-container-3 {
+    padding-left: 20vw;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
     background-size: cover;
     background: url('../images/page3.jpg');
-    width: 100vw;
+    width: 80vw;
 }
 .record-button {
     -webkit-flex: 1 100%;
@@ -69,6 +70,13 @@ audio {
 .play-button {
     -webkit-flex: 1 20%;
     flex: 1 20%;
+}
+
+#touch-synth {
+    width: 20vw;
+    position: fixed;
+    border: solid black;
+    height: 100vh;
 }
 .active {background-color: red !important;}
  #drag-container {visibility: hidden; height: 100%;}

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       container.style.visibility = "visible";
 
-  		var voice_button = document.getElementById('panel-101')
+  		var voice_button = document.getElementById('touch-synth')
   		var impulse1 = document.getElementById('panel-201')
   		var impulse2 = document.getElementById('panel-202')
   		var impulse3 = document.getElementById('panel-203')
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
         this.classList.add("active")
         __("#hihat").adsr("trigger")
       })
-      impulse3.addEventListener('touchend', function(event) {
+      impulse4.addEventListener('touchend', function(event) {
         this.classList.remove("active")
         __("#hihat").adsr("release")
       })
