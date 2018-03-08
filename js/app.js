@@ -7,14 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
     afterInitialize: function() {
 
       var detune = 0
-
+      var currentpitch = 90
       document.body.addEventListener('touchmove', function(e) { 
         e.preventDefault(); 
-        var xa = x
-        var x = Math.floor( e.touches[0].clientY );
-        x += detune
-        console.log(x)
-        __("monosynth").ramp(x,0.01,"frequency",xa);
+        var lastpitch = currentpitch
+        var currentpitch = Math.floor( e.touches[0].clientY );
+        console.log(currentpitch)
+        __("monosynth").ramp(currentpitch,0.01,"frequency",lastpitch);
       });
 
       container.style.visibility = "visible";
@@ -92,7 +91,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (x < -90) { x = -90};
 
         x += 90;
-        detune = x
+        lastpitch = currentpitch
+        currentpitch += x
+        __("monosynth").ramp(currentpitch,0.01,"frequency",lastpitch);
       }
 
       window.addEventListener('deviceorientation', handleOrientation);
