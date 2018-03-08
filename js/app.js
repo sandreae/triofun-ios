@@ -16,12 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
       container.style.visibility = "visible";
 
   		var voice_button = document.getElementById('touch-synth')
-  		var impulse1 = document.getElementById('panel-201')
-  		var impulse2 = document.getElementById('panel-202')
-  		var impulse3 = document.getElementById('panel-203')
-  		var impulse4 = document.getElementById('panel-204')
-      var drum1 = document.getElementById('drum1')
-  		var voicetog = false
 
       FastClick.attach(document.body);
 
@@ -37,42 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
         __("monosynth").monosynth("noteOff")
   		})
 
-      ///////PAGE 2/////////
-
-      impulse1.addEventListener('touchstart', function(event) {
-        this.classList.add("active")
-        __("#kick").adsr("trigger")
-      })
-      impulse1.addEventListener('touchend', function(event) {
-        this.classList.remove("active")
-        __("#kick").adsr("release")
-      })
-      impulse2.addEventListener('touchstart', function(event) {
-        this.classList.add("active")
-        __("#bass").adsr("trigger")
-      })
-      impulse2.addEventListener('touchend', function(event) {
-        this.classList.remove("active")
-        __("#bass").adsr("release")
-      })
-      impulse3.addEventListener('touchstart', function(event) {
-        this.classList.add("active")
-        __("#snare").adsr("trigger")
-      })
-      impulse3.addEventListener('touchend', function(event) {
-        this.classList.remove("active")
-        __("#snare").adsr("release")
-      })
-      impulse4.addEventListener('touchstart', function(event) {
-        this.classList.add("active")
-        __("#hihat").adsr("trigger")
-      })
-      impulse4.addEventListener('touchend', function(event) {
-        this.classList.remove("active")
-        __("#hihat").adsr("release")
-      })
-
-      ///////PAGE 3/////////
 
       var drums = document.getElementsByClassName('drum-sample')
       // You have to call the arrays forEach method
