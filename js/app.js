@@ -80,7 +80,10 @@ document.addEventListener("DOMContentLoaded", function() {
       })
   		drum1.addEventListener('touchend', function(event) {
         this.classList.remove("active")
-  			__("sampler").stop()
+        __("#samplergain").ramp([1,0],[0.1])
+        setTimeout(function(){ 
+          __("sampler").stop()
+          __("#samplergain").attr({"gain": 1}) }, 100);
   		})
 
 
@@ -90,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
   		__().pink().adsr({id:"snare",envelope:[0.1, 0.1, 1]}).connect("compressor");
   		__().white().adsr({id:"hihat",envelope:[0.1, 0.1, 1]}).connect("compressor");
       __().monosynth().connect("compressor").play();
-      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum10", loop:true}).connect("dac");
+      __().sampler({path:"/triofun-ios/samples/10_Trtomds.wav", id: "drum10", loop:true}).gain({id: "samplergain"})connect("dac");
 
   		cracked.soundLoaded = function(x) {
         console.log("sample loaded", x)
